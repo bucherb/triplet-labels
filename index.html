@@ -1,1 +1,93 @@
-<h>Hello<\h>
+<!DOCTYPE HTML>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Hi, Jon Here. Please DELETE the two <script> tags below if you use this HTML, otherwise my analytics will track your page -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-7580334-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-7580334-2');
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script>
+   <script lang="javascript" src="js/xlsx.full.min.js"></script>
+
+   <script>
+       $(document).ready(function(){
+             $("#fileUploader").change(function(evt){
+                   var selectedFile = evt.target.files[0];
+                   var reader = new FileReader();
+                   reader.onload = function(event) {
+                     var data = event.target.result;
+                     var workbook = XLSX.read(data, {
+                         type: 'binary'
+                     });
+                     workbook.SheetNames.forEach(function(sheetName) {
+
+                         var XL_row_object = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
+                         var json_object = JSON.stringify(XL_row_object);
+                         document.getElementById("jsonObject").innerHTML = json_object;
+                       })
+                   };
+                   reader.onerror = function(event) {
+                     console.error("File could not be read! Code " + event.target.error.code);
+                   };
+                   reader.readAsBinaryString(selectedFile);
+             });
+       });
+   </script>
+  <title>Triplet-Data Labeling</title>
+
+  <meta name="author" content="Bernadette Bucher">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+
+<body>
+  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+    <tr style="padding:0px">
+      <td style="padding:0px">
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr style="padding:0px">
+            <td style="padding:2.5%;width:63%;vertical-align:middle">
+              <p style="text-align:center">
+                <name>Triplet Data Labeling</name>
+    <input type="file" id="fileUploader" name="fileUploader" accept=".xls, .xlsx"/>
+    </br></br>
+    <label id="jsonObject"> JSON : </label>
+              </p>
+            </td>
+            <td style="padding:2.5%;width:25%;max-width:25%">
+              <papertitle>Anchor</papertitle>
+              <!-- TODO add anchor image -->
+            </td>
+          </tr>
+        </tbody></table>
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+
+          <tr>
+            <td width="padding:20px;width:50%" valign="left">
+              <!-- TODO add image 1 -->
+            </td>
+
+            <td width="padding:20px;width:50%" valign="right">
+              <!-- TODO add image 2 -->
+            </td>
+          </tr>
+
+
+        </tbody></table>
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr>
+              <papertitle>Comments</papertitle>
+          </tr>
+        </tbody></table>
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>
