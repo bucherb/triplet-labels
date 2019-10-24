@@ -1,6 +1,5 @@
 $(document).ready(function(){
   var metadata = $.getJSON("triplets.json");
-  const backup = JSON.parse(JSON.stringify(metadata));
   console.log(metadata);
   var i = 0
     // TODO give option to upload saved JSON - Nephele
