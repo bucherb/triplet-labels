@@ -38,6 +38,7 @@ $(document).ready(function(){
         'click': function(){
             i += 1;
             console.log(metadata);
+            $('#myTextArea').val('');
             $('#anchor').attr('src','images/' + metadata.responseJSON[i]['anchor']);
             $('#image1').attr('src','images/' + metadata.responseJSON[i]['1']);
             $('#image2').attr('src','images/' + metadata.responseJSON[i]['2']);
@@ -47,7 +48,7 @@ $(document).ready(function(){
     });
     $('#myTextArea').on({
         'change': function(){
-          metadata.responseJSON[i]['Notes'] = $('input:textbox').val();
+          metadata.responseJSON[i]['Notes'] = $('#myTextArea').val();
         }
     });
     // TODO update so that comments are saved in 'notes' in JSON
