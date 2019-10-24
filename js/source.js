@@ -51,9 +51,12 @@ $(document).ready(function(){
             $('#iter').val(i);
             if (i % 20 == 0) {
               //$('#download_link').trigger('click');
-              var event = document.createEvent("MouseEvents");
-              event.initEvent("click", true, false);
-              $('#download_link').attr('href').dispatchEvent(event);
+              // var event = document.createEvent("MouseEvents");
+              // event.initEvent("click", true, false);
+              // $('#download_link').attr('href').dispatchEvent(event);
+              var event = new MouseEvent('click');
+              var link = document.getElementById("download_link");
+              link.dispatchEvent(event);
             }
             $('#myTextArea').val('');
             $('#anchor').attr('src','images/' + metadata.responseJSON[i]['anchor']);
