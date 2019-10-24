@@ -85,7 +85,7 @@ $(document).ready(function(){
           i = $('#iter').val();
         }
     });
-    var data = new Blob([metadata], {type: 'text/plain'});
+    var data = new Blob([metadata.responseJSON], {type: 'text/plain'});
 
     var url = window.URL.createObjectURL(data);
 
