@@ -6,13 +6,13 @@ $(document).ready(function(){
     $('#image1').on({
         'click': function(){
             $('#check1').attr('src','https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/white-heavy-check-mark.png');
-            metadata[i]['Positive'] = metadata[i]['1'];
+            metadata.responseJSON[i]['Positive'] = metadata.responseJSON[i]['1'];
         }
     });
     $('#image2').on({
         'click': function(){
             $('#check2').attr('src','https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/white-heavy-check-mark.png');
-            metadata[i]['Positive'] = metadata[i]['2'];
+            metadata[i]['Positive'] = metadata.responseJSON[i]['2'];
         }
     });
     $('#clear').on({
@@ -25,10 +25,10 @@ $(document).ready(function(){
     $('#next').on({
         'click': function(){
             i += 1;
-            console.log(metadata);
-            $('#anchor').attr('src','images/' + metadata[i]['anchor']);
-            $('#image1').attr('src','images/' + metadata[i]['1']);
-            $('#image2').attr('src','images/' + metadata[i]['2']);
+            //console.log(metadata);
+            $('#anchor').attr('src','images/' + metadata.responseJSON[i]['anchor']);
+            $('#image1').attr('src','images/' + metadata.responseJSON[i]['1']);
+            $('#image2').attr('src','images/' + metadata.responseJSON[i]['2']);
             //document.getElementById('anchor').src = 'images/' + metadata[i]['anchor'];
             //document.getElementById('image1').src = 'images/' + metadata[i]['1'];
             //document.getElementById('image2').src = 'images/' + metadata[i]['2'];
