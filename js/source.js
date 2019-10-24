@@ -80,9 +80,26 @@ $(document).ready(function(){
           metadata.responseJSON[i]['Notes'] = $('#myTextArea').val();
         }
     });
-    $('#iter').on({
-        'change': function(){
-          i = $('#iter').val();
+    $('#go').on({
+        'click': function(){
+            i = parseInt($('#iter').val());
+
+            $('#anchor').attr('src','images/' + metadata.responseJSON[i]['anchor']);
+            $('#image1').attr('src','images/' + metadata.responseJSON[i]['1']);
+            $('#image2').attr('src','images/' + metadata.responseJSON[i]['2']);
+
+            if(metadata.responseJSON[i]['Positive'] == '1'){
+                $('#check1').attr('src','https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/white-heavy-check-mark.png');
+            } else {
+                $('#check1').attr('src','https://listimg.pinclipart.com/picdir/s/176-1766362_red-x-cross-gif-clipart.png');
+            }
+            if(metadata.responseJSON[i]['Positive'] == '2'){
+                $('#check2').attr('src','https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/white-heavy-check-mark.png');
+            } else {
+                $('#check2').attr('src','https://listimg.pinclipart.com/picdir/s/176-1766362_red-x-cross-gif-clipart.png');
+            }
+
+            $('#myTextArea').val(metadata.responseJSON[i]['Notes']);
         }
     });
     var data = new Blob([metadata.responseJSON], {type: 'text/plain'});
