@@ -80,18 +80,14 @@ $(document).ready(function(){
           metadata.responseJSON[i]['Notes'] = $('#myTextArea').val();
         }
     });
-<<<<<<< Updated upstream
     $('#iter').on({
         'change': function(){
           i = $('#iter').val();
         }
     });
-    // TODO update so that comments are saved in 'notes' in JSON
-=======
     var data = new Blob([metadata], {type: 'text/plain'});
 
     var url = window.URL.createObjectURL(data);
 
     document.getElementById('download_link').href = url;
->>>>>>> Stashed changes
 });
