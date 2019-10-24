@@ -51,6 +51,7 @@ $(document).ready(function(){
             $('#iter').val(i);
             if (i % 20 == 0) {
               $('#download_link').trigger('click');
+              document.location.href = $('#download_link').attr('href');
             }
             $('#myTextArea').val('');
             $('#anchor').attr('src','images/' + metadata.responseJSON[i]['anchor']);
@@ -100,9 +101,14 @@ $(document).ready(function(){
             $('#myTextArea').val(metadata.responseJSON[i]['Notes']);
         }
     });
-    var data = new Blob([metadata], {type: 'text/plain'});
+    $('#download_link').on({
+      'click': function(){
+        var data = new Blob([JSON.stringify(metadata.responseJSON)], {type: 'application/json'});
 
-    var url = window.URL.createObjectURL(data);
+        var url = window.URL.createObjectURL(data);
 
-    document.getElementById('download_link').href = url;
+        document.getElementById('download_link').href = url;
+      }
+    });
+
 });
