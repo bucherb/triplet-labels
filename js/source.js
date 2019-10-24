@@ -2,8 +2,6 @@ $(document).ready(function(){
   var metadata = $.getJSON("triplets.json");
   console.log(metadata);
   var i = 0
-    // TODO give option to upload saved JSON - Nephele
-    // TODO add autodownload for every 20 triplets - Bernadette
     $('#image1').on({
         'click': function(){
             $('#check1').attr('src','https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/white-heavy-check-mark.png');
@@ -50,10 +48,6 @@ $(document).ready(function(){
             i += 1;
             $('#iter').val(i);
             if (i % 20 == 0) {
-              //$('#download_link').trigger('click');
-              // var event = document.createEvent("MouseEvents");
-              // event.initEvent("click", true, false);
-              // $('#download_link').attr('href').dispatchEvent(event);
               var event = new MouseEvent('click');
               var link = document.getElementById("download_link");
               link.dispatchEvent(event);
