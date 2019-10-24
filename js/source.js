@@ -3,7 +3,10 @@ $(document).ready(function(){
   const backup = JSON.parse(JSON.stringify(metadata));
   console.log(metadata);
   var i = 0
-    // TODO update with checkmark clicks that update 'positive' field in json
+    // TODO make clear button clear text - Nephele
+    // TODO give option to upload saved JSON - Nephele
+    // TODO make text box with current iteration which is editable to skip through data - Nephele
+    // TODO add autodownload for every 20 triplets - Bernadette
     $('#image1').on({
         'click': function(){
             $('#check1').attr('src','https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/white-heavy-check-mark.png');
