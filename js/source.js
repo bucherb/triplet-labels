@@ -3,7 +3,6 @@ $(document).ready(function(){
   const backup = JSON.parse(JSON.stringify(metadata));
   console.log(metadata);
   var i = 0
-    // TODO make clear button clear text - Nephele
     // TODO give option to upload saved JSON - Nephele
     // TODO make text box with current iteration which is editable to skip through data - Nephele
     // TODO add autodownload for every 20 triplets - Bernadette
@@ -29,6 +28,7 @@ $(document).ready(function(){
     $('#back').on({
         'click': function(){
             i -= 1;
+            $('#iter').val(i);
             $('#anchor').attr('src','images/' + metadata.responseJSON[i]['anchor']);
             $('#image1').attr('src','images/' + metadata.responseJSON[i]['1']);
             $('#image2').attr('src','images/' + metadata.responseJSON[i]['2']);
@@ -50,6 +50,7 @@ $(document).ready(function(){
     $('#next').on({
         'click': function(){
             i += 1;
+            $('#iter').val(i);
             $('#myTextArea').val('');
             $('#anchor').attr('src','images/' + metadata.responseJSON[i]['anchor']);
             $('#image1').attr('src','images/' + metadata.responseJSON[i]['1']);
@@ -74,6 +75,11 @@ $(document).ready(function(){
     $('#myTextArea').on({
         'change': function(){
           metadata.responseJSON[i]['Notes'] = $('#myTextArea').val();
+        }
+    });
+    $('#iter').on({
+        'change': function(){
+          i = $('#iter').val();
         }
     });
     // TODO update so that comments are saved in 'notes' in JSON
