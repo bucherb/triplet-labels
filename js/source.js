@@ -53,6 +53,19 @@ $(document).ready(function(){
             $('#image2').attr('src','images/' + metadata.responseJSON[i]['2']);
             $('#check1').attr('src','https://listimg.pinclipart.com/picdir/s/176-1766362_red-x-cross-gif-clipart.png');
             $('#check2').attr('src','https://listimg.pinclipart.com/picdir/s/176-1766362_red-x-cross-gif-clipart.png');
+
+            if(metadata.responseJSON[i]['Positive'] == '1'){
+                $('#check1').attr('src','https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/white-heavy-check-mark.png');
+            } else {
+                $('#check1').attr('src','https://listimg.pinclipart.com/picdir/s/176-1766362_red-x-cross-gif-clipart.png');
+            }
+            if(metadata.responseJSON[i]['Positive'] == '2'){
+                $('#check2').attr('src','https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/white-heavy-check-mark.png');
+            } else {
+                $('#check2').attr('src','https://listimg.pinclipart.com/picdir/s/176-1766362_red-x-cross-gif-clipart.png');
+            }
+
+            $('#myTextArea').val(metadata.responseJSON[i]['Notes']);
         }
     });
     $('#myTextArea').on({
