@@ -4,7 +4,6 @@ $(document).ready(function(){
   console.log(metadata);
   var i = 0
     // TODO give option to upload saved JSON - Nephele
-    // TODO make text box with current iteration which is editable to skip through data - Nephele
     // TODO add autodownload for every 20 triplets - Bernadette
     $('#image1').on({
         'click': function(){
@@ -53,6 +52,7 @@ $(document).ready(function(){
             $('#iter').val(i);
             if (i % 20 == 0) {
               $('#download_link').trigger('click');
+              document.location.href = $('#download_link').attr('href');
             }
             $('#myTextArea').val('');
             $('#anchor').attr('src','images/' + metadata.responseJSON[i]['anchor']);
