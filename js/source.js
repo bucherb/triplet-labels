@@ -102,10 +102,14 @@ $(document).ready(function(){
             $('#myTextArea').val(metadata.responseJSON[i]['Notes']);
         }
     });
+    $('#download_link').on({
+      'click': function(){
+        var data = new Blob([JSON.stringify(metadata.responseJSON)], {type: 'application/json'});
 
-    var data = new Blob([JSON.stringify(metadata.responseJSON)], {type: 'application/json'});
+        var url = window.URL.createObjectURL(data);
 
-    var url = window.URL.createObjectURL(data);
+        document.getElementById('download_link').href = url;
+      }
+    });
 
-    document.getElementById('download_link').href = url;
 });
