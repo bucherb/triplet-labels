@@ -2,14 +2,12 @@ $(document).ready(function(){
   var metadata = $.getJSON("triplets.json");
   console.log(metadata);
   var i = 0
-    // TODO give option to upload saved JSON - Nephele
-    // TODO add autodownload for every 20 triplets - Bernadette
 
     document.getElementById('import').onclick = function() {
-        var files = document.getElementById('inputfile').files;
-
-        metadata = $.getJSON(files[0])
-        console.log(metadata);
+        var file = document.getElementById('inputfile').files[0];
+        read = new FileReader();
+        var result = read.readAsBinaryString(file);
+        console.log(result);
     }
 
     $('#image1').on({
@@ -58,8 +56,9 @@ $(document).ready(function(){
             i += 1;
             $('#iter').val(i);
             if (i % 20 == 0) {
-              $('#download_link').trigger('click');
-              document.location.href = $('#download_link').attr('href');
+              var event = new MouseEvent('click');
+              var link = document.getElementById("download_link");
+              link.dispatchEvent(event);
             }
             $('#myTextArea').val('');
             $('#anchor').attr('src','images/' + metadata.responseJSON[i]['anchor']);
