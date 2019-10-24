@@ -102,7 +102,8 @@ $(document).ready(function(){
             $('#myTextArea').val(metadata.responseJSON[i]['Notes']);
         }
     });
-    var data = new Blob([metadata.responseJSON], {type: 'text/plain'});
+
+    var data = new Blob([JSON.stringify(metadata.responseJSON)], {type: 'application/json'});
 
     var url = window.URL.createObjectURL(data);
 
