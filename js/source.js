@@ -45,5 +45,10 @@ $(document).ready(function(){
             $('#check2').attr('src','https://listimg.pinclipart.com/picdir/s/176-1766362_red-x-cross-gif-clipart.png');
         }
     });
+    $('#myTextArea').on({
+        'change': function(){
+          metadata.responseJSON[i]['Notes'] = $('input:textbox').val();
+        }
+    });
     // TODO update so that comments are saved in 'notes' in JSON
 });
