@@ -4,10 +4,16 @@ $(document).ready(function(){
   var i = 0
 
     document.getElementById('import').onclick = function() {
-        var file = document.getElementById('inputfile').files[0];
-        read = new FileReader();
-        var result = read.readAsBinaryString(file);
-        console.log(result);
+        readFile(document.getElementById('inputfile').files[0], function(e) {
+            var temp = e.target.result;
+            metadata.responseJSON = JSON.parse(temp);
+        });
+    }
+
+    function readFile(file, onLoadCallback){
+        var reader = new FileReader();
+        reader.onload = onLoadCallback;
+        reader.readAsBinaryString(file);
     }
 
     $('#image1').on({
