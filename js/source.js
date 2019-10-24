@@ -6,13 +6,13 @@ $(document).ready(function(){
     $('#image1').on({
         'click': function(){
             $('#check1').attr('src','https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/white-heavy-check-mark.png');
-            metadata.responseJSON[i]['Positive'] = 1;
+            metadata.responseJSON[i]['Positive'] = '1';
         }
     });
     $('#image2').on({
         'click': function(){
             $('#check2').attr('src','https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/white-heavy-check-mark.png');
-            metadata.responseJSON[i]['Positive'] = 2;
+            metadata.responseJSON[i]['Positive'] = '2';
         }
     });
     $('#clear').on({
