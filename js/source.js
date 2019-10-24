@@ -4,6 +4,14 @@ $(document).ready(function(){
   var i = 0
     // TODO give option to upload saved JSON - Nephele
     // TODO add autodownload for every 20 triplets - Bernadette
+
+    document.getElementById('import').onclick = function() {
+        var files = document.getElementById('inputfile').files;
+
+        metadata = $.getJSON(files[0])
+        console.log(metadata);
+    }
+
     $('#image1').on({
         'click': function(){
             $('#check1').attr('src','https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/white-heavy-check-mark.png');
