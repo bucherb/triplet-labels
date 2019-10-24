@@ -51,8 +51,10 @@ $(document).ready(function(){
             i += 1;
             $('#iter').val(i);
             if (i % 20 == 0) {
-              $('#download_link').trigger('click');
-              document.location.href = $('#download_link').attr('href');
+              //$('#download_link').trigger('click');
+              var event = document.createEvent("MouseEvents");
+              event.initEvent("click", true, false);
+              $('#download_link').attr('href').dispatchEvent(event);
             }
             $('#myTextArea').val('');
             $('#anchor').attr('src','images/' + metadata.responseJSON[i]['anchor']);
